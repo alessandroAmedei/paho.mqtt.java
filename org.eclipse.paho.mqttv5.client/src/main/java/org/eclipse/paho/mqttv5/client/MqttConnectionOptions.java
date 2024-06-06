@@ -35,7 +35,7 @@ import org.eclipse.paho.mqttv5.common.util.MqttTopicValidator;
 
 /**
  * Holds the set of options that control how the client connects to a server.
- * 
+ *
  * Constructs a new {@link MqttConnectionOptions} object using the default
  * values.
  *
@@ -121,7 +121,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the MQTT version.
-	 * 
+	 *
 	 * @return the MQTT version.
 	 */
 	public int getMqttVersion() {
@@ -130,7 +130,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the user name to use for the connection.
-	 * 
+	 *
 	 * @return the user name to use for the connection.
 	 */
 	public String getUserName() {
@@ -139,7 +139,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Sets the user name to use for the connection.
-	 * 
+	 *
 	 * @param userName
 	 *            The Username as a String
 	 */
@@ -149,7 +149,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the password to use for the connection.
-	 * 
+	 *
 	 * @return the password to use for the connection.
 	 */
 	public byte[] getPassword() {
@@ -158,7 +158,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Sets the password to use for the connection.
-	 * 
+	 *
 	 * @param password
 	 *            A Char Array of the password
 	 */
@@ -168,7 +168,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the topic to be used for last will and testament (LWT).
-	 * 
+	 *
 	 * @return the MqttTopic to use, or <code>null</code> if LWT is not set.
 	 * @see #setWill(String, MqttMessage)
 	 */
@@ -180,7 +180,7 @@ public class MqttConnectionOptions {
 	 * Returns the message to be sent as last will and testament (LWT). The returned
 	 * object is "read only". Calling any "setter" methods on the returned object
 	 * will result in an <code>IllegalStateException</code> being thrown.
-	 * 
+	 *
 	 * @return the message to use, or <code>null</code> if LWT is not set.
 	 */
 	public MqttMessage getWillMessage() {
@@ -191,7 +191,7 @@ public class MqttConnectionOptions {
 	 * Sets the "Last Will and Testament" (LWT) for the connection. In the event
 	 * that this client unexpectedly looses it's connection to the server, the
 	 * server will publish a message to itself using the supplied details.
-	 * 
+	 *
 	 * @param topic
 	 *            the topic to publish to.
 	 * @param message
@@ -211,7 +211,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns whether the client and server should remember state for the client
 	 * across reconnects.
-	 * 
+	 *
 	 * @return the clean session flag
 	 */
 	public boolean isCleanStart() {
@@ -228,27 +228,27 @@ public class MqttConnectionOptions {
 	 * <li>The Session expiry interval is exceeded after the network connection is
 	 * closed, see {@link MqttConnectionOptions#setSessionExpiryInterval}</li>
 	 * </ul>
-	 * 
+	 *
 	 * If set to true, the server will immediately drop any existing session state
 	 * for the given client and will initiate a new session.
-	 * 
+	 *
 	 * In order to implement QoS 1 and QoS 2 protocol flows the Client and Server
 	 * need to associate state with the Client Identifier, this is referred to as
 	 * the Session State. The Server also stores the subscriptions as part of the
 	 * Session State.
-	 * 
+	 *
 	 * The session can continue across a sequence of Network Connections. It lasts
 	 * as long as the latest Network Connection plus the Session Expiry Interval.
-	 * 
+	 *
 	 * The Session State in the Client consists of:
-	 * 
+	 *
 	 * <ul>
 	 * <li>QoS 1 and QoS 2 messages which have been sent to the Server, but have not
 	 * been completely acknowledged.</li>
 	 * <li>QoS 2 messages which have been received from the Server, but have not
 	 * been completely acknowledged.</li>
 	 * </ul>
-	 * 
+	 *
 	 * The Session State in the Server consists of:
 	 * <ul>
 	 * <li>The existence of a Session, even if the rest of the Session State is
@@ -264,12 +264,12 @@ public class MqttConnectionOptions {
 	 * <li>If the Session is currently not connected, the time at which the Session
 	 * will end and Session State will be discarded.</li>
 	 * </ul>
-	 * 
+	 *
 	 * Retained messages do not form part of the Session State in the Server, they
 	 * are not deleted as a result of a Session ending.
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * @param cleanStart
 	 *            Set to True to enable cleanSession
 	 */
@@ -279,7 +279,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the "keep alive" interval.
-	 * 
+	 *
 	 * @see #setKeepAliveInterval(int)
 	 * @return the keep alive interval.
 	 */
@@ -314,7 +314,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the connection timeout value.
-	 * 
+	 *
 	 * @see #setConnectionTimeout(int)
 	 * @return the connection timeout value.
 	 */
@@ -328,7 +328,7 @@ public class MqttConnectionOptions {
 	 * the MQTT server to be established. The default timeout is 30 seconds. A value
 	 * of 0 disables timeout processing meaning the client will wait until the
 	 * network connection is made successfully or fails.
-	 * 
+	 *
 	 * @param connectionTimeout
 	 *            the timeout value, measured in seconds. It must be &gt;0;
 	 */
@@ -341,7 +341,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Get the maximum time (in millis) to wait between reconnects
-	 * 
+	 *
 	 * @return Get the maximum time (in millis) to wait between reconnects
 	 */
 	public int getMaxReconnectDelay() {
@@ -350,7 +350,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Set the maximum time to wait between reconnects
-	 * 
+	 *
 	 * @param maxReconnectDelay
 	 *            the duration (in millis)
 	 */
@@ -360,7 +360,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Return a list of serverURIs the client may connect to
-	 * 
+	 *
 	 * @return the serverURIs or null if not set
 	 */
 	public String[] getServerURIs() {
@@ -413,7 +413,7 @@ public class MqttConnectionOptions {
 	 * </p>
 	 * </li>
 	 * </ol>
-	 * 
+	 *
 	 * @param serverURIs
 	 *            to be used by the client
 	 */
@@ -427,7 +427,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns whether the client will automatically attempt to reconnect to the
 	 * server if the connection is lost
-	 * 
+	 *
 	 * @return the automatic reconnection flag.
 	 */
 	public boolean isAutomaticReconnect() {
@@ -446,12 +446,12 @@ public class MqttConnectionOptions {
 	 * double until it is at 2 minutes at which point the delay will stay at 2
 	 * minutes.</li>
 	 * </ul>
-	 * 
+	 *
 	 * You can change the Minimum and Maximum delays by using
 	 * {@link #setAutomaticReconnectDelay(int, int)}
-	 * 
+	 *
 	 * This Defaults to true
-	 * 
+	 *
 	 * @param automaticReconnect
 	 *            If set to True, Automatic Reconnect will be enabled
 	 */
@@ -462,7 +462,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Sets the Minimum and Maximum delays used when attempting to automatically
 	 * reconnect.
-	 * 
+	 *
 	 * @param minDelay
 	 *            the minimum delay to wait before attempting to reconnect in
 	 *            seconds, defaults to 1 second.
@@ -478,7 +478,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the minimum number of seconds to wait before attempting to
 	 * automatically reconnect.
-	 * 
+	 *
 	 * @return the automatic reconnect minimum delay in seconds.
 	 */
 	public int getAutomaticReconnectMinDelay() {
@@ -488,7 +488,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the maximum number of seconds to wait before attempting to
 	 * automatically reconnect.
-	 * 
+	 *
 	 * @return the automatic reconnect maximum delay in seconds.
 	 */
 	public int getAutomaticReconnectMaxDelay() {
@@ -498,7 +498,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the Session Expiry Interval. If <code>null</code>, this means the
 	 * session will not expire.
-	 * 
+	 *
 	 * @return the Session Expiry Interval in seconds.
 	 */
 	public Long getSessionExpiryInterval() {
@@ -510,17 +510,20 @@ public class MqttConnectionOptions {
 	 * the maximum time that the broker will maintain the session for once the
 	 * client disconnects. Clients should only connect with a long Session Expiry
 	 * interval if they intend to connect to the server at some later point in time.
-	 * 
+	 *
 	 * <ul>
 	 * <li>By default this value is null and so will not be sent, in this case, the
 	 * session will not expire.</li>
-	 * <li>If a 0 is sent, the session will end immediately once the Network
+	 * <li>If a 0 is sent, or if is absent, the session will end immediately once the Network
 	 * Connection is closed.</li>
+	 * <li>If the Session Expiry Interval is 0xFFFFFFFF (UINT_MAX), the Session does not expire.</li>
+	 * <li>The Client and Server MUST store the Session State after the Network Connection is closed if
+	 * the Session Expiry Interval is greater than 0</li>
 	 * </ul>
-	 * 
+	 *
 	 * When the client has determined that it has no longer any use for the session,
 	 * it should disconnect with a Session Expiry Interval set to 0.
-	 * 
+	 *
 	 * @param sessionExpiryInterval
 	 *            The Session Expiry Interval in seconds.
 	 */
@@ -531,7 +534,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the Receive Maximum value. If <code>null</code>, it will default to
 	 * 65,535.
-	 * 
+	 *
 	 * @return the Receive Maximum
 	 */
 	public Integer getReceiveMaximum() {
@@ -548,7 +551,7 @@ public class MqttConnectionOptions {
 	 * <li>If set, the minimum value for this property is 1.</li>
 	 * <li>The maximum value for this property is 65,535.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param receiveMaximum
 	 *            the Receive Maximum.
 	 */
@@ -561,7 +564,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the Maximum Packet Size. If <code>null</code>, no limit is imposed.
-	 * 
+	 *
 	 * @return the Maximum Packet Size in bytes.
 	 */
 	public Long getMaximumPacketSize() {
@@ -571,14 +574,14 @@ public class MqttConnectionOptions {
 	/**
 	 * Sets the Maximum Packet Size. This value represents the Maximum Packet Size
 	 * the client is willing to accept.
-	 * 
+	 *
 	 * <ul>
 	 * <li>If set to <code>null</code> then no limit is imposed beyond the
 	 * limitations of the protocol.</li>
 	 * <li>If set, the minimum value for this property is 1.</li>
 	 * <li>The maximum value for this property is 2,684,354,656.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param maximumPacketSize
 	 *            The Maximum packet size.
 	 */
@@ -589,7 +592,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the Topic Alias Maximum. If <code>null</code>, the default value is
 	 * 0.
-	 * 
+	 *
 	 * @return the Topic Alias Maximum.
 	 */
 	public Integer getTopicAliasMaximum() {
@@ -599,13 +602,13 @@ public class MqttConnectionOptions {
 	/**
 	 * Sets the Topic Alias Maximum. This value if present represents the highest
 	 * value that the Client will accept as a Topic Alias sent by the Server.
-	 * 
+	 *
 	 * <ul>
 	 * <li>If set to <code>null</code>, then it will default to to 0.</li>
 	 * <li>If set to 0, the Client will not accept any Topic Aliases</li>
 	 * <li>The Maximum value for this property is 65535.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param topicAliasMaximum
 	 *            the Topic Alias Maximum
 	 */
@@ -619,7 +622,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the Request Response Info flag. If <code>null</code>, the default
 	 * value is false.
-	 * 
+	 *
 	 * @return The Request Response Info Flag.
 	 */
 	public Boolean getRequestResponseInfo() {
@@ -635,7 +638,7 @@ public class MqttConnectionOptions {
 	 * <li>If set to true, the server MAY return response information in the
 	 * CONNACK.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param requestResponseInfo
 	 *            The Request Response Info Flag.
 	 */
@@ -646,7 +649,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the Request Problem Info flag. If <code>null</code>, the default
 	 * value is true.
-	 * 
+	 *
 	 * @return the Request Problem Info flag.
 	 */
 	public Boolean getRequestProblemInfo() {
@@ -663,7 +666,7 @@ public class MqttConnectionOptions {
 	 * <li>If set to true, the server MAY return a Reason String or User Properties
 	 * on any packet where it is allowed.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param requestProblemInfo
 	 *            The Flag to request problem information.
 	 */
@@ -673,7 +676,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the User Properties.
-	 * 
+	 *
 	 * @return the User Properties.
 	 */
 	public List<UserProperty> getUserProperties() {
@@ -683,7 +686,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Sets the User Properties. A User Property is a UTF-8 String Pair, the same
 	 * name is allowed to appear more than once.
-	 * 
+	 *
 	 * @param userProperties
 	 *            User Properties
 	 */
@@ -694,7 +697,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the Authentication Method. If <code>null</code>, extended
 	 * authentication is not performed.
-	 * 
+	 *
 	 * @return the Authentication Method.
 	 */
 	public String getAuthMethod() {
@@ -704,9 +707,9 @@ public class MqttConnectionOptions {
 	/**
 	 * Sets the Authentication Method. If set, this value contains the name of the
 	 * authentication method to be used for extended authentication.
-	 * 
+	 *
 	 * If <code>null</code>, extended authentication is not performed.
-	 * 
+	 *
 	 * @param authMethod
 	 *            The Authentication Method.
 	 */
@@ -716,7 +719,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the Authentication Data.
-	 * 
+	 *
 	 * @return the Authentication Data.
 	 */
 	public byte[] getAuthData() {
@@ -727,7 +730,7 @@ public class MqttConnectionOptions {
 	 * Sets the Authentication Data. If set, this byte array contains the extended
 	 * authentication data, defined by the Authenticated Method. It is a protocol
 	 * error to include Authentication Data if there is no Authentication Method.
-	 * 
+	 *
 	 * @param authData
 	 *            The Authentication Data
 	 */
@@ -738,7 +741,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns the socket factory that will be used when connecting, or
 	 * <code>null</code> if one has not been set.
-	 * 
+	 *
 	 * @return The Socket Factory
 	 */
 	public SocketFactory getSocketFactory() {
@@ -750,7 +753,7 @@ public class MqttConnectionOptions {
 	 * apply its own policies around the creation of network sockets. If using an
 	 * SSL connection, an <code>SSLSocketFactory</code> can be used to supply
 	 * application-specific security settings.
-	 * 
+	 *
 	 * @param socketFactory
 	 *            the factory to use.
 	 */
@@ -760,7 +763,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the SSL properties for the connection.
-	 * 
+	 *
 	 * @return the properties for the SSL connection
 	 */
 	public Properties getSSLProperties() {
@@ -836,7 +839,7 @@ public class MqttConnectionOptions {
 	 * object instead of using the default algorithm available in the platform.
 	 * Example values: "PKIX" or "IBMJ9X509".</dd>
 	 * </dl>
-	 * 
+	 *
 	 * @param props
 	 *            The SSL {@link Properties}
 	 */
@@ -846,7 +849,7 @@ public class MqttConnectionOptions {
 
 	/**
 	 * Returns the HostnameVerifier for the SSL connection.
-	 * 
+	 *
 	 * @return the HostnameVerifier for the SSL connection
 	 */
 	public HostnameVerifier getSSLHostnameVerifier() {
@@ -860,7 +863,7 @@ public class MqttConnectionOptions {
 	 * <p>
 	 * There is no default HostnameVerifier
 	 * </p>
-	 * 
+	 *
 	 * @param hostnameVerifier
 	 *            the {@link HostnameVerifier}
 	 */
@@ -871,7 +874,7 @@ public class MqttConnectionOptions {
 	/**
 	 * Returns whether to automatically assign subscription identifiers when
 	 * subscribing to a topic.
-	 * 
+	 *
 	 * @return if automatic assignment of subscription identifiers is enabled.
 	 */
 	public boolean useSubscriptionIdentifiers() {
@@ -886,7 +889,7 @@ public class MqttConnectionOptions {
 	 * client will do best effort topic matching with all callbacks, however this
 	 * might result in an incorrect callback being called if there are multiple
 	 * subscriptions to topics using a combination of wildcards.
-	 * 
+	 *
 	 * @param useSubscriptionIdentifiers
 	 *            Whether to enable automatic assignment of subscription
 	 *            identifiers.
@@ -962,7 +965,7 @@ public class MqttConnectionOptions {
 	 * Set the time in seconds that the executor service should wait when
 	 * terminating before forcefully terminating. It is not recommended to change
 	 * this value unless you are absolutely sure that you need to.
-	 * 
+	 *
 	 * @param executorServiceTimeout the time in seconds to wait when shutting down.Ï
 	 */
 	public void setExecutorServiceTimeout(int executorServiceTimeout) {
